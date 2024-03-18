@@ -7,8 +7,9 @@
 :root {
     --white: #FFFFFF;
     --black: #000000;
-    --faint-grey: #f0eef1;
-    --faint-grey-2: #f0eef180;
+    --grey-1: #a3a3a3d1;
+    --grey-2: #f0eef1;
+    --grey-3: #f0eef180;
     --bright-green: #9fff9c;
     --bright-red: #ff7070;
     --gold-yellow: #ffdf00;
@@ -58,7 +59,7 @@ header .logo {
 }
 
 main {
-    background-color: var(--faint-grey);
+    background-color: var(--grey-2);
 }
 
 main .cards-container {
@@ -88,7 +89,7 @@ main .cards-container {
     font: 500 1.8rem var(--main-font);
     color: var(--dark-text);
     background: center center / contain no-repeat;
-    background-color: var(--faint-grey-2);
+    background-color: var(--grey-3);
     background-image: none;
 }
 
@@ -131,6 +132,20 @@ main .cards-container {
 .card .delete-btn:hover,
 .card .status-btn.read:hover {
     fill: var(--bright-red);
+}
+
+.add-book-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 500 8rem var(--main-font);
+    color: var(--white);
+    background-color: var(--grey-1);
+    transition: ease-in-out .5s;
+}
+
+.card.add-book-btn:active {
+    scale: .95;
 }
 
 .logo:hover,
