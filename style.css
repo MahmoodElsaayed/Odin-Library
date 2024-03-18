@@ -7,7 +7,7 @@
 :root {
     --white: #FFFFFF;
     --black: #000000;
-    --faint-grey: #d3d3d32e;
+    --faint-grey: #f0eef1;
     --bright-green: #9fff9c;
     --bright-red: #ff7070;
     --gold-yellow: #ffdf00;
@@ -34,4 +34,39 @@ body {
     height: 100%;
     font-size: 62.5%;
     font-family: var(--main-font, --backup-fonts);
+}
+
+body {
+    display: grid;
+    grid-template-rows: 120px 1fr;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    box-shadow: var(--shadow-1);
+    z-index: 999;
+}
+
+header .logo {
+    font: 700 5.5rem var(--main-font);
+}
+
+main {
+    background-color: var(--faint-grey);
+}
+
+main .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+    width: 85%;
+    padding: 60px 0;
+    margin: 0 auto;
+}
+
+.logo:hover {
+    cursor: pointer;
 }
