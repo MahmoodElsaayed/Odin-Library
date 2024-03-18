@@ -8,9 +8,12 @@
     --white: #FFFFFF;
     --black: #000000;
     --faint-grey: #f0eef1;
+    --faint-grey-2: #f0eef180;
     --bright-green: #9fff9c;
     --bright-red: #ff7070;
     --gold-yellow: #ffdf00;
+    --dark-text: #414551;
+    --light-text: #828490;
 
     --shadow-1:
         0 10px 15px -3px rgb(0 0 0 / 0.1),
@@ -67,6 +70,74 @@ main .cards-container {
     margin: 0 auto;
 }
 
-.logo:hover {
+.card {
+    position: relative;
+    height: 420px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: var(--white);
+    box-shadow: var(--shadow-2);
+}
+
+.card .book-cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    margin-bottom: 25px;
+    font: 500 1.8rem var(--main-font);
+    color: var(--dark-text);
+    background: center center / contain no-repeat;
+    background-color: var(--faint-grey-2);
+    background-image: none;
+}
+
+.card .title {
+    margin-bottom: 19px;
+    font: 400 1.9rem var(--main-font);
+    color: var(--dark-text);
+}
+
+.card .sub-info p {
+    margin-top: 13px;
+    font: 300 1.4rem var(--main-font);
+    color: var(--light-text);
+}
+
+.card .buttons-container {
+    position: absolute;
+    display: flex;
+    gap: 8px;
+    bottom: 17px;
+    right: 15px;
+}
+
+.card .btn {
+    transition: ease-in-out .2s;
+}
+
+.card svg {
+    width: 23px;
+}
+
+.card .rating-btn:hover {
+    fill: var(--gold-yellow);
+}
+
+.card .status-btn.unread:hover {
+    fill: var(--bright-green);
+}
+
+.card .delete-btn:hover,
+.card .status-btn.read:hover {
+    fill: var(--bright-red);
+}
+
+.logo:hover,
+.btn:hover {
     cursor: pointer;
+}
+
+.btn:active {
+    scale: .9;
 }
