@@ -5,11 +5,11 @@ function Book(bookData) {
     this.author = bookData.author;
     this.status = bookData.status;
     this.rating = bookData.rating;
-    this.cover = bookData.cover;
+    this.bookCover = bookData.bookCover;
 }
 
 function addNewBook(bookData) {
-    const book = Book(bookData);
+    const book = new Book(bookData);
     myLibrary.push(book);
     const bookCard = createBookCard(book);
     document.querySelector(".cards-container")
