@@ -1,4 +1,26 @@
-const myLibrary = [];
+const myLibrary = [
+    {
+        title: "7 Habits of highly effective people",
+        author: "Stephen Covey",
+        status: "true",
+        rating: "9",
+        bookCover: "https://m.media-amazon.com/images/I/71Koyhv2bML._AC_UF1000,1000_QL80_.jpg",
+    },
+    {
+        title: "Atomic Habits",
+        author: "James Clear",
+        status: "",
+        rating: "",
+        bookCover: "https://m.media-amazon.com/images/I/81YkqyaFVEL._AC_UF1000,1000_QL80_.jpg",
+    },
+    {
+        title: "Deep Work",
+        author: "Cal Newport",
+        status: "true",
+        rating: "9",
+        bookCover: "https://m.media-amazon.com/images/I/91nujEwIpYL._AC_UF1000,1000_QL80_.jpg",
+    },
+];
 
 function Book(bookData) {
     this.title = bookData.title;
@@ -13,7 +35,7 @@ function addNewBook(bookData) {
     myLibrary.push(book);
     const bookCard = createBookCard(book);
     document.querySelector(".cards-container")
-        .insertBefore(bookCard, document.getElementById("add-book-btn"));
+            .insertBefore(bookCard, document.getElementById("add-book-btn"));
 }
 
 function createBookCard(bookData) {
@@ -179,4 +201,13 @@ ratingForm.addEventListener("submit", (event) => {
     const targetBookIndex = ratingForm.getAttribute("data-target-book").match(/book-(\d+)/)[1];
     myLibrary[targetBookIndex].rating = newRating;
     document.querySelector(`#book-${targetBookIndex} .rating-para`).textContent = `Rating: ${newRating}/10`;
+})
+
+document.addEventListener("DOMContentLoaded", () => {
+    myLibrary.forEach((book, index) => {
+        const bookCard = createBookCard(book);
+        bookCard.id = `book-${index}`; // override repeated indecies
+        document.querySelector(".cards-container")
+                .insertBefore(bookCard, document.getElementById("add-book-btn"));
+    })
 })
