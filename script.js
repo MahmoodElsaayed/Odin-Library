@@ -50,6 +50,7 @@ function createBookCard(bookData) {
 
     // Status paragraph
     const statusPara = document.createElement('p');
+    statusPara.className = `status-para`;
     statusPara.textContent = `Status: ${(bookData.status) ? "Read" : "Unread"}`;
 
     // Rating paragraph
@@ -118,6 +119,13 @@ function getFormData(event) {
     event.target.closest("dialog").close();
     event.target.reset();
     return inputsObj;
+}
+
+function toggleBookStatus(event) {
+    const targetBookIndex = event.target.closest(".card").id.match(/book-(\d+)/)[1];
+    const newStatus = !myLibrary[targetBookIndex].status
+    myLibrary[targetBookIndex].status = newStatus;
+    document.querySelector(`#book-${targetBookIndex} .status-para`).textContent = `Status: ${newStatus ? "Read" : "Unread"}`;
 }
 
 
