@@ -132,6 +132,14 @@ function deleteBook(event) {
     const targetBookIndex = event.target.closest(".card").id.match(/book-(\d+)/)[1];
     myLibrary.splice(targetBookIndex, 1);
     document.getElementById(`book-${targetBookIndex}`).remove();
+    resetCardsEnumeration()
+}
+
+function resetCardsEnumeration() {
+    const cards = [...document.querySelectorAll(".card:not(.btn)")];
+    cards.forEach((card, index) => {
+        card.id = `book-${index}`;
+    })
 }
 
 // DOM Stuff //
