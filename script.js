@@ -8,6 +8,18 @@ function Book(title, author, status, rating, cover) {
     this.cover = cover;
 }
 
+function getFormData(event) {
+    event.preventDefault();
+    const inputsObj = {}
+    const formData = new FormData(event.target);
+    for (let pair of formData.entries()) {
+        inputsObj[pair[0]] = pair[1];
+    }
+    event.target.closest("dialog").close();
+    event.target.reset();
+    return inputsObj;
+}
+
 
 // DOM Stuff //
 const modals = document.querySelectorAll("dialog");
