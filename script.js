@@ -13,7 +13,7 @@ function addNewBook(bookData) {
     myLibrary.push(book);
     const bookCard = createBookCard(book);
     document.querySelector(".cards-container")
-            .insertBefore(bookCard, document.getElementById("add-book-btn"));
+        .insertBefore(bookCard, document.getElementById("add-book-btn"));
 }
 
 function createBookCard(bookData) {
@@ -93,6 +93,17 @@ function createBookCard(bookData) {
     card.appendChild(info);
 
     return card;
+}
+
+function createSvg(symbol) {
+    const projectSvgStrings = {
+        star: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,17.66M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z" /></svg>`,
+        eye: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" /></svg>`,
+        bin: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" /></svg>`,
+    }
+    let parser = new DOMParser();
+    let doc = parser.parseFromString(projectSvgStrings[symbol], "image/svg+xml");
+    return doc.documentElement;
 }
 
 function getFormData(event) {
