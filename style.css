@@ -217,6 +217,13 @@ main .cards-container {
     margin-top: -210px;
 }
 
+.modal#rating-modal {
+    width: 300px;
+    margin-left: -150px;
+    height: 210px;
+    margin-top: -105px;
+}
+
 .logo:hover,
 .btn:hover {
     cursor: pointer;

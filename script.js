@@ -20,7 +20,7 @@ function createBookCard(bookData) {
     // Card div
     const card = document.createElement('div');
     card.className = 'card';
-    card.id = `book-${myLibrary.length}`;
+    card.id = `book-${myLibrary.length-1}`;
 
     // Book cover div
     const cover = document.createElement('div');
@@ -54,6 +54,7 @@ function createBookCard(bookData) {
 
     // Rating paragraph
     const ratingPara = document.createElement('p');
+    ratingPara.className = `rating-para`;
     ratingPara.textContent = `Rating: ${(bookData.rating) ? bookData.rating : "--"}/10`;
 
     // Card buttons div container
@@ -64,6 +65,7 @@ function createBookCard(bookData) {
     const ratingBtn = createSvg("star");
     ratingBtn.classList.add('rating-btn', 'btn');
     ratingBtn.addEventListener("click", () => {
+        ratingForm.setAttribute("data-target-book", `${ratingBtn.closest(".card").id}`); 
         ratingModal.showModal();
     })
 
@@ -124,6 +126,8 @@ const modals = document.querySelectorAll("dialog");
 const addBookBtn = document.getElementById("add-book-btn");
 const addBookModal = document.getElementById("add-book-modal");
 const addBookForm = document.getElementById("add-book-form");
+const ratingModal = document.getElementById("rating-modal");
+const ratingForm = document.getElementById("rating-form");
 
 // Close modal if clicked outside of modal
 modals.forEach(modal => {
@@ -148,3 +152,10 @@ addBookForm.addEventListener("submit", (event) => {
     const bookData = getFormData(event);
     addNewBook(bookData);
 });
+
+ratingForm.addEventListener("submit", (event) => {
+    const newRating = getFormData(event).rating;
+    const targetBookIndex = ratingForm.getAttribute("data-target-book").match(/book-(\d+)/)[1];
+    myLibrary[targetBookIndex].rating = newRating;
+    document.querySelector(`#book-${targetBookIndex} .rating-para`).textContent = `Rating: ${newRating}/10`;
+})
