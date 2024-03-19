@@ -7,3 +7,34 @@ function Book(title, author, status, rating, cover) {
     this.rating = rating;
     this.cover = cover;
 }
+
+
+// DOM Stuff //
+const modals = document.querySelectorAll("dialog");
+const addBookBtn = document.getElementById("add-book-btn");
+const addBookModal = document.getElementById("add-book-modal");
+const addBookForm = document.getElementById("add-book-form");
+
+// Close modal if clicked outside of modal
+modals.forEach(modal => {
+    modal.addEventListener("click", (event) => {
+        const modalDimensions = modal.getBoundingClientRect()
+        if (
+            event.clientX < modalDimensions.left ||
+            event.clientX > modalDimensions.right ||
+            event.clientY < modalDimensions.top ||
+            event.clientY > modalDimensions.bottom
+        ) {
+            modal.close()
+        }
+    })
+})
+
+addBookBtn.addEventListener("click", () => {
+    addBookModal.showModal();
+})
+
+addBookForm.addEventListener("submit", (event) => {
+    const bookData = getFormData(event);
+    addNewBook(bookData);
+});
