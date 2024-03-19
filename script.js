@@ -1,11 +1,19 @@
 const myLibrary = [];
 
-function Book(title, author, status, rating, cover) {
-    this.title = title;
-    this.author = author;
-    this.status = status;
-    this.rating = rating;
-    this.cover = cover;
+function Book(bookData) {
+    this.title = bookData.title;
+    this.author = bookData.author;
+    this.status = bookData.status;
+    this.rating = bookData.rating;
+    this.cover = bookData.cover;
+}
+
+function addNewBook(bookData) {
+    const book = Book(bookData);
+    myLibrary.push(book);
+    const bookCard = createBookCard(book);
+    document.querySelector(".cards-container")
+            .insertBefore(bookCard, document.getElementById("add-book-btn"));
 }
 
 function getFormData(event) {
