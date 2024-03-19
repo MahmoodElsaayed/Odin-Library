@@ -94,7 +94,7 @@ function createBookCard(bookData) {
 
     // Card status button
     const statusBtn = createSvg("eye");
-    statusBtn.classList.add('status-btn', 'btn', (bookData.status) ? 'read' : 'unread');
+    statusBtn.classList.add('status-btn', 'btn');
     statusBtn.addEventListener("click", toggleBookStatus)
 
     // Card delete button
@@ -153,15 +153,6 @@ function toggleBookStatus(event) {
     // Update status paragraph text
     const statusPara = document.querySelector(`#book-${targetBookIndex} .status-para`);
     statusPara.textContent = `Status: ${!isRead ? "Read" : "Unread"}`;
-    
-    // Add or remove read and unread classes based on status
-    if (!isRead) {
-        event.target.classList.remove("unread");
-        event.target.classList.add("read");
-    } else {
-        event.target.classList.remove("read");
-        event.target.classList.add("unread");
-    }
 }
 
 function deleteBook(event) {

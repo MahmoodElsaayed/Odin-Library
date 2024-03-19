@@ -10,6 +10,7 @@
     --grey-1: #a3a3a3d1;
     --grey-2: #f0eef1;
     --grey-3: #f0eef180;
+    --blue-1: #2a75dd;
     --bright-green: #9fff9c;
     --bright-red: #ff7070;
     --gold-yellow: #ffdf00;
@@ -125,12 +126,11 @@ main .cards-container {
     fill: var(--gold-yellow);
 }
 
-.card .status-btn.unread:hover {
-    fill: var(--bright-green);
+.card .status-btn:hover {
+    fill: var(--blue-1);
 }
 
-.card .delete-btn:hover,
-.card .status-btn.read:hover {
+.card .delete-btn:hover {
     fill: var(--bright-red);
 }
 
