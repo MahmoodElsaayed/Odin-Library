@@ -145,9 +145,23 @@ function getFormData(event) {
 
 function toggleBookStatus(event) {
     const targetBookIndex = event.target.closest(".card").id.match(/book-(\d+)/)[1];
-    const newStatus = !myLibrary[targetBookIndex].status
-    myLibrary[targetBookIndex].status = newStatus;
-    document.querySelector(`#book-${targetBookIndex} .status-para`).textContent = `Status: ${newStatus ? "Read" : "Unread"}`;
+    const isRead = myLibrary[targetBookIndex].status;
+
+    // Toggle status property 
+    myLibrary[targetBookIndex].status = !isRead;
+    
+    // Update status paragraph text
+    const statusPara = document.querySelector(`#book-${targetBookIndex} .status-para`);
+    statusPara.textContent = `Status: ${!isRead ? "Read" : "Unread"}`;
+    
+    // Add or remove read and unread classes based on status
+    if (!isRead) {
+        event.target.classList.remove("unread");
+        event.target.classList.add("read");
+    } else {
+        event.target.classList.remove("read");
+        event.target.classList.add("unread");
+    }
 }
 
 function deleteBook(event) {
