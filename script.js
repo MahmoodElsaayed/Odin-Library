@@ -128,6 +128,11 @@ function toggleBookStatus(event) {
     document.querySelector(`#book-${targetBookIndex} .status-para`).textContent = `Status: ${newStatus ? "Read" : "Unread"}`;
 }
 
+function deleteBook(event) {
+    const targetBookIndex = event.target.closest(".card").id.match(/book-(\d+)/)[1];
+    myLibrary.splice(targetBookIndex, 1);
+    document.getElementById(`book-${targetBookIndex}`).remove();
+}
 
 // DOM Stuff //
 const modals = document.querySelectorAll("dialog");
